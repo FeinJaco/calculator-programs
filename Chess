@@ -1,0 +1,277 @@
+ClrHome
+ClrDraw
+AxesOff
+0→Xmin
+94→Xmax
+0→Ymin
+62→Ymax
+Menu("","PLAYER 1",P1,"PLAYER 2",P2)
+Lbl P1
+0→P
+RecallPic 1
+Goto A
+Lbl P2
+1→P
+RecallPic 2
+
+Lbl A
+[F]→[D]
+1→W
+6→Z
+0→R
+
+While 1
+R+1→R
+If remainder(R+1,2)=P
+Then
+0→F
+0→G
+abs(9P-F)→H
+abs(9P-G)→I
+0→X
+0→Y
+0→O
+While X=0 and Y=0
+For(U,1,5
+getKey→θ
+If θ=105
+Then
+abs(9P-W)→A
+abs(9P-Z)→B
+If [D](B,A)≠0 and remainder([D](B,A),2)=P and (A≠F or B≠G)
+Then
+If F≠0 and G≠0
+Then
+1→L
+Goto D2
+Lbl L1
+End
+A→F
+B→G
+W→H
+Z→I
+2→L
+Goto D2
+Lbl L2
+[D](G,F)→D
+(D-2-(D/2≠round(D/2,0)))/2→C
+Else
+If F≠0 and G≠0
+Then
+W-H→J
+I-Z→K
+If J≠0 or K≠0
+Then
+abs(J)→M
+abs(K)→N
+If C=0 and (J=0 and [D](B,A)=0 and (K=1 or K=2 and I=7 and [D](abs(9P-6),A)=0)) or (M=1 and K=1 and [D](B,A)≠0)
+Goto T
+If C=1 and (J=0 xor K=0)
+Goto S
+If C=2 and (M=1 and N=2 or M=2 and N=1)
+Goto T
+If C=3 and M=N
+Goto S
+If C=4 and (M=1 or N=1)
+Goto T
+If C=5 and (M=N or (J=0 xor K=0))
+Goto S
+
+Goto F
+Lbl S
+H→M
+I→N
+Lbl R
+If J≠0
+M+abs(J)/J→M
+If K≠0
+N-abs(K)/K→N
+If (M≠W or N≠Z) and [D](abs(9P-N),abs(9P-M))≠0
+Goto F
+If M≠W or N≠Z
+Goto R
+
+Lbl T
+A→X
+B→Y
+Lbl F
+End
+End
+End
+End
+If (θ=24 and W>1) or (θ=25 and Z>1) or (θ=26 and W<8) or (θ=34 and Z<8)
+Then
+If O=1
+Then
+3→L
+Goto D1
+Lbl L3
+End
+If θ=24
+W-1→W
+If θ=26
+W+1→W
+If θ=25
+Z-1→Z
+If θ=34
+Z+1→Z
+1→U
+1→O
+4→L
+Goto D1
+Lbl L4
+Else
+If U=1 or (O=1 and X≠0)
+Then
+5→L
+If O=1
+Then
+0→O
+Else
+1→O
+End
+Goto D1
+Lbl L5
+End
+End
+End
+End
+
+If C=0 and Z=1
+Then
+Menu("PROMOTION","ROOK",C1,"KNIGHT",C2,"BISHOP",C3,"QUEEN",C5
+Lbl C1
+1→C
+Goto J
+Lbl C2
+2→C
+Goto J
+Lbl C3
+3→C
+Goto J
+Lbl C5
+5→C
+
+Lbl J
+2C+P+2→D
+End
+X+Y+D→Q
+If [D](Y,X)-1+P=10
+Goto E1
+
+Else
+Pause 
+GetCalc(D
+If D=0
+Goto E2
+ClrHome
+DispGraph
+GetCalc(F
+ClrHome
+DispGraph
+GetCalc(G
+ClrHome
+DispGraph
+GetCalc(X
+ClrHome
+DispGraph
+GetCalc(Y
+(D-2-(D/2≠round(D/2,0)))/2→C
+X+Y+D→Q
+abs(9P-X)→W
+abs(9P-Y)→Z
+abs(9P-F)→H
+abs(9P-G)→I
+End
+
+For(B,1,7
+For(A,1,7
+11+7H+A→S
+66-7I-B→T
+If (F+G)/2=round((F+G)/2,0)
+Then
+Pt-On(S,T
+Else
+Pt-Off(S,T
+End
+End
+End
+If X=0 or Y=0
+Stop
+If [D](Y,X)≠0
+Then
+For(B,1,7
+For(A,1,7
+11+7W+A→S
+66-7Z-B→T
+If (X+Y)/2=round((X+Y)/2,0)
+Then
+Pt-On(S,T
+Else
+Pt-Off(S,T
+End
+End
+End
+End
+For(B,1,5
+For(A,1,5
+12+7W+A→S
+65-7Z-B→T
+[E](B,A+5C)→E
+If E=1 or E=2 and Q/2=round(Q/2,0)
+Pt-Change(S,T
+End
+End
+
+D→[D](Y,X)
+0→[D](G,F)
+End
+
+Lbl D1
+Pt-Change(12+7W,62-7Z
+Pt-Change(15+7W,65-7Z
+Pt-Change(18+7W,62-7Z
+Pt-Change(15+7W,59-7Z
+If L=3
+Goto L3
+If L=4
+Goto L4
+If L=5
+Goto L5
+
+Lbl D2
+Pt-Change(12+7H,64-7I
+Pt-Change(12+7H,65-7I
+Pt-Change(13+7H,65-7I
+Pt-Change(17+7H,65-7I
+Pt-Change(18+7H,65-7I
+Pt-Change(18+7H,64-7I
+Pt-Change(18+7H,60-7I
+Pt-Change(18+7H,59-7I
+Pt-Change(17+7H,59-7I
+Pt-Change(13+7H,59-7I
+Pt-Change(12+7H,59-7I
+Pt-Change(12+7H,60-7I
+If L=1
+Goto L1
+If L=2
+Goto L2
+
+Lbl E1
+ClrHome
+Output(3,5,"YOU WIN!"
+Goto E3
+
+Lbl E2
+ClrHome
+Output(3,5,"YOU LOSE"
+
+Lbl E3
+0→D
+Output(6,3,"PRESS ENTER"
+Pause 
+Menu("","PLAY AGAIN?",Z1,"QUIT",Z2
+Lbl Z1
+prgmCHESS
+Lbl Z2
+Stop
