@@ -1,0 +1,92 @@
+ClrHome
+{8,16}→dim([C]
+Fill(0,[C]
+For(F,8,10
+1→[C](4,F
+Output(4,F,"O
+End
+3→L
+1→D
+8→X
+4→Y
+10→B
+4→C
+0→K
+0→A
+0→S
+While K≠1
+getKey→G
+If A<3
+Then
+randInt(1,2A+3)→R
+If R=1
+Then
+randInt(1,16)→W
+randInt(1,8)→Z
+If [C](Z,W)=0
+Then
+5→[C](Z,W)
+A+1→A
+Output(Z,W,"*
+End
+End
+End
+If G=24 and D≠3
+1→D
+If G=25 and D≠4
+2→D
+If G=26 and D≠1
+3→D
+If G=34 and D≠2
+4→D
+If D=1 and X=1 or D=2 and Y=1 or D=3 and X=16 or D=4 and Y=8
+1→K
+D→[C](Y,X
+If D=1 and X>1
+X-1→X
+If D=2 and Y>1
+Y-1→Y
+If D=3 and X<16
+X+1→X
+If D=4 and Y<8
+Y+1→Y
+If [C](Y,X)≠0 and [C](Y,X)≠5
+1→K
+If [C](Y,X)=5
+Then
+0→[C](Y,X
+S+1→S
+A-1→A
+End
+Output(Y,X,"O
+If S+3=L
+Output(C,B," 
+If S+3=L
+Then
+B→U
+C→V
+If [C](C,B)=1 and B>1 and B=U and C=V
+B-1→B
+If [C](C,B)=2 and C>1 and B=U and C=V
+C-1→C
+If [C](C,B)=3 and B<16 and B=U and C=V
+B+1→B
+If [C](C,B)=4 and C<8 and B=U and C=V
+C+1→C
+Else
+S+3→L
+End
+0→[C](V,U
+End
+ClrHome
+Output(3,4,"U IZ DEDZ
+Output(5,4,"SCORE:
+Output(5,10,50S
+Pause 
+ClrHome
+Menu("   PLAY AGAIN?  ","SURE",B,"NAH",C
+Lbl B
+prgmSNAKE
+Lbl C
+{1,1}→dim([C]
+ClrHome
